@@ -1,0 +1,167 @@
+@import 'config';
+@import 'menu';
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    @include background;
+    background: $primary-color;
+    color: set-text-color($primary-color);
+    height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5;
+}
+
+header {
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+}
+
+.text-secondary {
+    color: $secondary-color;
+}
+
+main {
+    padding: 4rem;
+    min-height: calc(100vh - 40px);
+    .icons {
+        margin-top: 1rem;
+        a {
+            padding: 0.4rem;
+            &:hover {
+                color: $secondary-color;
+                @include easeOut;
+            }
+        }
+    }
+    &#home {
+        overflow: hidden;
+        h1 {
+            margin-top: 20vh;
+        }
+    }
+    &#about,
+    &#contact,
+    &#work {
+        overflow: hidden;
+        h1 {
+            margin-top: 5vh;
+        }
+    }
+}
+
+.about-info {
+    margin: 2rem 0;
+    display: grid;
+    grid-template-areas: 'bioimage bio bio' 'job1 job2 job3';
+    grid-gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    p {
+        text-align: justify;
+    }
+    .bio-image {
+        grid-area: bioimage;
+        border: solid 5px $secondary-color;
+        border-radius: 50%;
+        margin: auto;
+    }
+    .bio {
+        grid-area: bio;
+    }
+    .job {
+        background: lighten($primary-color, 5);
+        padding: 0.5rem 0.5rem 1rem 0.5rem;
+        border-bottom: solid 5px $secondary-color;
+        &>:nth-child(1) {
+            margin-bottom: 1rem;
+        }
+        &>:nth-child(2) {
+            margin-bottom: 1rem;
+        }
+        .job1 {
+            grid-area: job1;
+        }
+        .job2 {
+            grid-area: job2;
+        }
+        .job3 {
+            grid-area: job3;
+        }
+    }
+}
+
+//Work/Projects
+.projects {
+    display: grid;
+    grid-gap: 0.7rem;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 2rem;
+    img {
+        width: 100%;
+        border: solid white 3px;
+        &:hover {
+            opacity: 0.5;
+            border-color: $secondary-color;
+            @include easeOut;
+        }
+    }
+    .item {
+        a {
+            display: block;
+        }
+    }
+}
+
+#contact-form {
+    width: 50vw;
+    margin-top: 15vh;
+    display: grid;
+    grid-template-areas: 'name' 'email' 'message' 'button';
+    grid-template-columns: 1fr;
+    .form-group {
+        input,
+        textarea {
+            width: 100%;
+            padding: 0.7rem;
+            margin-bottom: 0.5rem;
+            &:focus {
+                outline: 3px solid $secondary-color;
+            }
+        }
+        input#name {
+            grid-area: name;
+        }
+        input#email {
+            grid-area: email;
+        }
+        textarea#message {
+            grid-area: message;
+        }
+        button {
+            grid-area: button;
+            background: lightgrey;
+            padding: 0.7em;
+            border: 0;
+            margin: 2rem 0;
+        }
+    }
+}
+
+#main-footer {
+    margin: 0;
+    text-align: center;
+    padding: 0.5rem;
+    background: darken($color: $primary-color, $amount: 10);
+    color: set-text-color($primary-color);
+    height: 40px;
+    .fa-heart {
+        animation: heartbeat 1s infinite;
+    }
+}
+
+@import 'mobile';
